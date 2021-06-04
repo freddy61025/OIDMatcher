@@ -2,7 +2,7 @@
 
 It is a small util to help check the OID input match one of the prefixes in the YAML file with key trap-type-oid-prefix
 
-## Compile / package
+## Package
 ```
 mvn clean package
 ```
@@ -11,6 +11,24 @@ mvn clean package
 java -jar OIDMatcher-1.0-SNAPSHOT.jar <YAML_FILENAME>
 ```
 java -jar target/OIDMatcher-1.0-SNAPSHOT.jar  ./src/test/resources/prefixes.yaml
+```
+
+example
+```
+java -jar target/OIDMatcher-1.0-SNAPSHOT.jar  ./src/test/resources/prefixesBig.yaml
+CTRL-C / CTRL-D to exit!
+.1.3.6.1.6.3.1.123.4.10
+.1.3.6.1.6.3.1.123.4.10: true
+.1.3.6.1.6.3.1.123.4.10.12
+.1.3.6.1.6.3.1.123.4.10.12: true
+.1.3.6.1.6.3.1.123.4.10.123454
+.1.3.6.1.6.3.1.123.4.10.123454: true
+.1.3.6.1.4.1.9.9.117.2.0.1
+.1.3.6.1.4.1.9.9.117.2.0.1: true
+.1.3.6.1.4.1.9.9.117
+.1.3.6.1.4.1.9.9.117: false
+.1.3.6.1.4.1.9.9.118.2.0.1
+.1.3.6.1.4.1.9.9.118.2.0.1: false
 ```
 
 ## Performance testing
