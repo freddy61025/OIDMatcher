@@ -34,6 +34,8 @@ public class Performance {
       long endTime = System.currentTimeMillis();
       System.out.println(matcher.getClass().getSimpleName() + " takes:\t\t\t" + (endTime - startTime) + "ms\t"
           + "match: " + matcher.matchPrefix(targetOid) + "\tnon-match: " + matcher.matchPrefix(failOid));
+
+      matcher.dumpTree();
     });
   }
 }

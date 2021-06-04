@@ -43,7 +43,7 @@ public class OIDCharTreeMatcher extends OIDMatcher {
   /**
    * Inserts oid into the tree
    * 
-   * @param word
+   * @param oid
    */
   private void insert(String oid) {
     TreeNode currentNode = root;
@@ -104,28 +104,28 @@ public class OIDCharTreeMatcher extends OIDMatcher {
   /**
    * Find the last node of in the prefix tree
    * 
-   * @param s
+   * @param oid
    * @return the last TreeNode
    */
-  public TreeNode searchLastPrefixNode(String s) {
-    TreeNode p = root;
-    for (int i = 0; i < s.length(); i++) {
-      char c = s.charAt(i);
+  public TreeNode searchLastPrefixNode(String oid) {
+    TreeNode currentNode = root;
+    for (int i = 0; i < oid.length(); i++) {
+      char c = oid.charAt(i);
       int index = convertCharToIdx(c);
-      if (p.isEnd && c == '.') {
-        return p;
+      if (currentNode.isEnd && c == '.') {
+        return currentNode;
       }
-      if (index < p.arr.length && p.arr[index] != null) {
-        p = p.arr[index];
+      if (index < currentNode.arr.length && currentNode.arr[index] != null) {
+        currentNode = currentNode.arr[index];
       } else {
         return null;
       }
     }
 
-    if (p == root)
+    if (currentNode == root)
       return null;
 
-    return p;
+    return currentNode;
   }
 
   private void buildTree(List<String> prefixes) {
